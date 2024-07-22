@@ -87,18 +87,13 @@
                             </div>
 
                             <div class="classynav" data-aos="fade-left" data-aos-duration="3000">
-                            <ul id="nav">
-                                    <li class="active"><a href="index.html">Home</a></li>
+                                <ul id="nav">
+                                    <li><a href="index.php">Home</a></li>
                                     <li><a href="about.php">About</a></li>
-                                    <li><a href="gallery.php">Gallery</a></li>
-                                    <li><a href="single-blog.php">Experience</a></li>
+                                    <li class="active"><a href="gallery.php">Gallery</a></li>
+                                    <li><a href="single-blog.php">Experience/Skills</a></li>
                                     <li><a href="contact.php">Contact</a></li>
                                 </ul>
-
-                                <div class="search-icon" data-toggle="modal" data-target="#searchModal"> <i
-                                        class="fa fa-search" aria-hidden="true"></i></div>
-                            </div>
-
                         </div>
                     </nav>
                 </div>
@@ -107,8 +102,7 @@
     </header>
 
 
-    <section class="breadcrumb-area bg-img bg-overlay jarallax"
-        style="background-image:url(img/lx-imges/lx3.jpg)">
+    <section class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image:url(img/lx-imges/lx3.jpg)">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
@@ -130,20 +124,26 @@
 
     <div class="lx-portfolio-area section-padding-80 clearfix" data-aos="fade-up" data-aos-duration="3000">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
 
-                    <div class="lx-projects-menu wow fadeInUp" data-wow-delay="100ms">
-                        <div class="portfolio-menu text-center">
-                            <button class="btn active" data-filter="*">All</button>
-                            <button class="btn" data-filter=".human">Human</button>
-                            <button class="btn" data-filter=".nature">Nature</button>
-                            <button class="btn" data-filter=".country">Country</button>
-                            <button class="btn" data-filter=".video">Video</button>
-                        </div>
-                    </div>
-                </div>
+
+
+            <div class="lx-projects-menu wow fadeInUp" data-wow-delay="100ms">
+                <form method="GET" action="gallery.php" style="text-align: center;">
+                    <button type="submit" name="category" value="All"
+                        class="btn <?php echo ($category == 'All') ? 'active' : ''; ?>">All</button>
+                    <button type="submit" name="category" value="Human"
+                        class="btn <?php echo ($category == 'Human') ? 'active' : ''; ?>">Human</button>
+                    <button type="submit" name="category" value="Nature"
+                        class="btn <?php echo ($category == 'Nature') ? 'active' : ''; ?>">Nature</button>
+                    <button type="submit" name="category" value="Country"
+                        class="btn <?php echo ($category == 'Country') ? 'active' : ''; ?>">Country</button>
+                    <button type="submit" name="category" value="Wedding"
+                        class="btn <?php echo ($category == 'Weeding') ? 'active' : ''; ?>">Wedding</button>
+                </form>
+
             </div>
+
+
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -151,6 +151,7 @@
                     margin: 0;
                     padding: 0;
                 }
+
                 .gallery {
                     display: flex;
                     flex-wrap: wrap;
@@ -158,6 +159,7 @@
                     gap: 10px;
                     padding: 20px;
                 }
+
                 .gallery img {
                     width: 100%;
                     height: auto;
@@ -166,28 +168,51 @@
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
                     transition: transform 0.2s;
                 }
+
                 .gallery img:hover {
                     transform: scale(1.05);
                 }
             </style>
             <div class="gallery">
-            <?php
-include 'connect.php';
-$query = "SELECT img_name FROM image";
-$result = mysqli_query($conn, $query);
+                <?php
+                include 'connect.php';
 
-if (mysqli_num_rows($result) > 0) {
-    echo '<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">'; // Container with flexbox
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo '<div style="margin: 10px; text-align: center;">'; // Centered and with margin for spacing
-        echo '<img src="img/' . $row['img_name'] . '" alt="Image">'; // No width or height, original size
-        echo '</div>';
-    }
-    echo '</div>'; // End of container
-} else {
-    echo '<p>No images found in the database.</p>';
-}
-?>
+                // Get the selected category from the form, default to 'All'
+                $category = isset($_GET['category']) ? $_GET['category'] : 'All';
+
+                // Modify the query based on the selected category
+                if ($category === 'All') {
+                    $query = "SELECT img_name, category FROM image";
+                } else {
+                    $query = "SELECT img_name, category FROM image WHERE category = ?";
+                }
+
+                // Prepare the statement
+                if ($stmt = mysqli_prepare($conn, $query)) {
+                    if ($category !== 'All') {
+                        mysqli_stmt_bind_param($stmt, "s", $category);
+                    }
+                    mysqli_stmt_execute($stmt);
+                    $result = mysqli_stmt_get_result($stmt);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo '<div style="margin: 10px; text-align: center;">'; // Centered and with margin for spacing
+                            echo '<img src="img/' . htmlspecialchars($row['img_name']) . '" alt="Image">'; // No width or height, original size
+                            echo '</div>';
+                        }
+                    } else {
+                        echo '<p>No images found in the database.</p>';
+                    }
+                } else {
+                    echo '<p>Database query failed: ' . mysqli_error($conn) . '</p>';
+                }
+
+                // Close the statement and connection
+                mysqli_stmt_close($stmt);
+                mysqli_close($conn);
+
+                ?>
 
 
             </div>
@@ -273,39 +298,18 @@ if (mysqli_num_rows($result) > 0) {
 
 
     <footer>
-        <div class="wrapper">
-            <div class="containerUp">
-                <div class="social-info">
-                    <h2>Follow Pixel Photography</h2>
-                    <div class="icons">
-
-                        <a href="https://www.linkedin.com" target="_blank"><img
-                                src="./img/footer-icons/pinpng.com-linkedin-png-533635.png"></a>
-                        <a href="https://www.instagram.com/pratistha_aryal" target="_blank"><img
-                                src="./img/footer-icons/insta.jpg"></a>
-                        <a href="https://in.pinterest.com" target="_blank"><img
-                                src="./img/footer-icons/pinterest-new.png"></a>
-                        <a href="https://github.com/pratistha16" target="_blank"><img
-                                src="./img/footer-icons/gtihub.png"></a>
-
-                    </div>
-                </div>
+        <div data-aos="slow-blink">
+        <div class="containerUp">
                 <div class="connect">
-                    <h2>Stay up to date on the latest from Pixel Photography</h2>
-                    <form>
-                        <input type="email" placeholder="Enter your email">
-                        <button>Subscribe</button>
-                    </form>
+                    <div >
+                    <p>Copyright © 2023 All rights reserved | Made with <span class="heart">❤</span> by <a
+                    href="https://www.instagram.com/pratistha_aryal/" target="_blank"> Pratistha</a></p>
+                    </div>
+
                 </div>
+               
             </div>
-            <hr>
-            <div class="containerDown">
-                <div class="last">
-                    <p>Copyright © 2023 All rights reserved | Made with <span class="heart">❤</span> by <a href="#"
-                            target="_blank">Sabita</a></p>
-                </div>
-            </div>
-        </div>
+</div>
     </footer>
 
 
