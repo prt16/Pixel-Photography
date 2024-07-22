@@ -15,7 +15,6 @@
         integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- <link rel="icon" href="img/core-img/1.png"> -->
     <link rel="icon" href="img/core-img/favicon.png">
     <!-- animate on scroll css  -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -23,32 +22,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-
-
-    <div class="top-search-area">
-        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-
-                        <button type="button" class="btn close-btn" data-dismiss="modal" style="font-size: 18px;"><i
-                                class="fas fa-times-circle"></i></button>
-
-                        <form action="https://scontinues22.wixsite.com/mysite" method="post">
-                            <input type="search" name="top-search-bar" class="form-control"
-                                placeholder="Search and hit enter...">
-                            <button type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<body> 
 
     <header class="header-area">
 
@@ -68,22 +42,18 @@
 
                         <div class="classy-menu">
 
-                            <div class="classycloseIcon">
-                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                            </div>
+                            <!-- <div class="classycloseIcon"> -->
+                                <!-- <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div> -->
+                            <!-- </div> -->
 
                             <div class="classynav" data-aos="fade-left" data-aos-duration="3000">
                                 <ul id="nav">
-                                    <li class="active"><a href="index.html">Home</a></li>
+                                    <li class="active"><a href="index.php">Home</a></li>
                                     <li><a href="about.php">About</a></li>
                                     <li><a href="gallery.php">Gallery</a></li>
-                                    <li><a href="single-blog.php">Experience</a></li>
+                                    <li><a href="single-blog.php">Experience/Skills</a></li>
                                     <li><a href="contact.php">Contact</a></li>
                                 </ul>
-
-                                <div class="search-icon" data-toggle="modal" data-target="#searchModal"> <i
-                                        class="fa fa-search" aria-hidden="true"></i></div>
-                            </div>
 
                         </div>
                     </nav>
@@ -130,7 +100,7 @@ mysqli_close($conn);
         <h2 data-animation="bounceInUp" data-delay="100ms">Hello <br>I'm Prath</h2>
         <p data-animation="bounceInUp" data-delay="500ms"><?php echo $description; ?></p>
         <div class="hero-btn-group" data-animation="bounceInUp" data-delay="900ms">
-                                    <a href="#" class="btn lx-btn mb-3 mb-sm-0 mr-4">Learn more</a>
+                                    <a href="about.php" class="btn lx-btn mb-3 mb-sm-0 mr-4">Learn more</a>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +108,7 @@ mysqli_close($conn);
                 </div>
             </div>
 
-            <div class="single-welcome-slide bg-img bg-overlay" data-aos="fade-left" data-aos-duration="3000"
+            <div class="single-welcome-slide bg-img bg-overlay" data-aos="fade-left" data-aos-duration="3000ms"
                 style="background-image: url(img/lx-imges/lx1.jpg);">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
@@ -152,9 +122,6 @@ mysqli_close($conn);
                                     with
                                     the things you see and everything to do with the way you see them.
                                 </p>
-                                <div class="hero-btn-group" data-animation="bounceInUp" data-delay="900ms">
-                                    <a href="#" class="btn lx-btn mb-3 mb-sm-0 mr-4">Get a Quote</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -295,7 +262,7 @@ mysqli_close($conn);
             </div>
             <div class="row">
                 <div class="col-12 text-center wow fadeInUp" data-wow-delay="700ms">
-                    <a href="#" class="btn lx-btn btn-2 mt-15">View More</a>
+                    <a href="gallery.php" class="btn lx-btn btn-2 mt-15">View More</a>
                 </div>
             </div>
         </div>
@@ -319,7 +286,7 @@ mysqli_close($conn);
             <div class="single-instagram-item">
                 <img src="img/bg-img/x11.jpg.pagespeed.ic.EUL6KdRKnX.jpg" alt="">
                 <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
-                    <a href="#" style="font-size: 18px;">
+                    <a href="https://www.instagram.com/pratistha_aryal/" style="font-size: 18px;">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
                         <span>@pratistha_aryal</span>
                     </a>
@@ -329,9 +296,9 @@ mysqli_close($conn);
             <div class="single-instagram-item">
                 <img src="img/bg-img/x12.jpg.pagespeed.ic.KtvCPGmp2L.jpg" alt="">
                 <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
-                    <a href="#" style="font-size: 18px;">
+                <a href="https://www.instagram.com/pratistha_aryal/" style="font-size: 18px;">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
-                        <span>pratistha_aryal</span>
+                        <span>@pratistha_aryal</span>
                     </a>
                 </div>
             </div>
@@ -339,10 +306,9 @@ mysqli_close($conn);
             <div class="single-instagram-item">
                 <img src="img/bg-img/13.jpg" alt="">
                 <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
-                    <a href="#" style="font-size: 18px;">
+                <a href="https://www.instagram.com/pratistha_aryal/" style="font-size: 18px;">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
-                        <span>pratistha_aryal
-                        </span>
+                        <span>@pratistha_aryal</span>
                     </a>
                 </div>
             </div>
@@ -350,9 +316,9 @@ mysqli_close($conn);
             <div class="single-instagram-item">
                 <img src="img/bg-img/14.jpg" alt="">
                 <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
-                    <a href="#" style="font-size: 18px;">
+                <a href="https://www.instagram.com/pratistha_aryal/" style="font-size: 18px;">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
-                        <span>pratistha_aryal</span>
+                        <span>@pratistha_aryal</span>
                     </a>
                 </div>
             </div>
@@ -360,9 +326,9 @@ mysqli_close($conn);
             <div class="single-instagram-item">
                 <img src="img/bg-img/15.jpg" alt="">
                 <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
-                    <a href="#" style="font-size: 18px;">
+                <a href="https://www.instagram.com/pratistha_aryal/" style="font-size: 18px;">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
-                        <span>pratistha_aryal</span>
+                        <span>@pratistha_aryal</span>
                     </a>
                 </div>
             </div>
@@ -370,9 +336,9 @@ mysqli_close($conn);
             <div class="single-instagram-item">
                 <img src="img/bg-img/16.jpg" alt="">
                 <div class="instagram-hover-content text-center d-flex align-items-center justify-content-center">
-                    <a href="#" style="font-size: 18px;">
+                <a href="https://www.instagram.com/pratistha_aryal/" style="font-size: 18px;">
                         <i class="fa fa-instagram" aria-hidden="true"></i>
-                        <span>pratistha_aryal</span>
+                        <span>@pratistha_aryal</span>
                     </a>
                 </div>
             </div>
@@ -380,48 +346,18 @@ mysqli_close($conn);
     </section>
 
     <footer>
-        <div class="wrapper" data-aos="fade-up" data-aos-duration="3000">
-            <div class="containerUp">
+        <div data-aos="slow-blink">
+        <div class="containerUp">
                 <div class="connect">
                     <div >
-                        <h2>Stay up to date on the latest from Pixel</h2>
+                    <p>Copyright © 2023 All rights reserved | Made with <span class="heart">❤</span> by <a
+                    href="https://www.instagram.com/pratistha_aryal/" target="_blank"> Pratistha</a></p>
                     </div>
-                    <div class="connect-form">
-                        <form>
-                            <input type="email" placeholder="Enter your email">
-                            <button>Subscribe</button>
-                        </form>
-                    </div>
+
                 </div>
-                <div class="social-info">
-                    <h2>Follow Pixel Photography/h2>
-                    <div class="icons">
-
-                        <a href="https://www.linkedin.com/in/" target="_blank"><img
-                                src="./img/footer-icons/pinpng.com-linkedin-png-533635.png"></a>
-                        <a href="https://www.instagram.com/pratistha_aryal/" target="_blank"><img
-                                src="./img/footer-icons/insta.jpg"></a>
-                        <a href="https://in.pinterest.com/pratistha_aryal/" target="_blank"><img
-                                src="./img/footer-icons/pinterest-new.png"></a>
-                        <a href="https://github.com/pratistha16 target="_blank"><img
-                                src="./img/footer-icons/gtihub.png"></a>
-
-                    </div>
-                </div>
-
+               
             </div>
-
-            <hr>
-            <div class="containerDown">
-                <div class="last">
-                    <div class="head" style="color: #636363;">Total Website Visit</div>
-                    <div class="count" style="color: #636363;">00</div>
-                </div>
-                <p>Copyright © 2023 All rights reserved | Made with <span class="heart">❤</span> by <a
-                        href="https://www.instagram.com/pratistha_aryal/" target="_blank"> Prath</a></p>
-            </div>
-        </div>
-        </div>
+</div>
     </footer>
 </body>
 
